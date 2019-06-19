@@ -8,11 +8,11 @@ class Contact extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return null;
+    return _ContactState();
   }
 }
 
-class ContactState extends State<Contact> {
+class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

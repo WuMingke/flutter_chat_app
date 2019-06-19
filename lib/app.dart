@@ -12,66 +12,66 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  var _currentIndex = 0;
+
+  MessagePage _messagePage;
+
+  Contact _contact;
+
+  Person _person;
+
+  _currentPage() {
+    switch (_currentIndex) {
+      case 0:
+        if (_messagePage == null) {
+          _messagePage = MessagePage();
+        }
+        return _messagePage;
+      case 1:
+        if (_contact == null) {
+          _contact = Contact();
+        }
+        return _contact;
+      case 2:
+        if (_person == null) {
+          _person = Person();
+        }
+        return _person;
+    }
+  }
+
+  _popupMenuItem(String title, {String imagePath, IconData icon}) {
+    return PopupMenuItem(
+      child: Row(
+        children: <Widget>[
+          imagePath != null
+              ? Image.asset(
+                  imagePath,
+                  width: 32,
+                  height: 32,
+                )
+              : SizedBox(
+                  width: 32,
+                  height: 32,
+                  child: Icon(
+                    icon,
+                    color: Colors.white,
+                  ),
+                ),
+          Container(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              title,
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    var _currentIndex = 0;
-
-    MessagePage _messagePage;
-
-    Contact _contact;
-
-    Person _person;
-
-    _currentPage() {
-      switch (_currentIndex) {
-        case 0:
-          if (_messagePage == null) {
-            _messagePage = MessagePage();
-          }
-          return _messagePage;
-        case 1:
-          if (_contact == null) {
-            _contact = Contact();
-          }
-          return _contact;
-        case 2:
-          if (_person == null) {
-            _person = Person();
-          }
-          return _person;
-      }
-    }
-
-    _popupMenuItem(String title, {String imagePath, IconData icon}) {
-      return PopupMenuItem(
-        child: Row(
-          children: <Widget>[
-            imagePath != null
-                ? Image.asset(
-                    imagePath,
-                    width: 32,
-                    height: 32,
-                  )
-                : SizedBox(
-                    width: 32,
-                    height: 32,
-                    child: Icon(
-                      icon,
-                      color: Colors.white,
-                    ),
-                  ),
-            Container(
-              padding: EdgeInsets.only(left: 20),
-              child: Text(
-                title,
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -105,11 +105,11 @@ class _AppState extends State<App> {
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _currentIndex,
-          onTap: (index) {
+          onTap: ((index) {
             setState(() {
               _currentIndex = index;
             });
-          },
+          }),
           items: [
             BottomNavigationBarItem(
               title: Text(
@@ -134,7 +134,7 @@ class _AppState extends State<App> {
             ),
             BottomNavigationBarItem(
               title: Text(
-                "聊天",
+                "好友",
                 style: TextStyle(
                   color: _currentIndex == 1
                       ? Color(0xFF46c01b)
@@ -155,7 +155,7 @@ class _AppState extends State<App> {
             ),
             BottomNavigationBarItem(
               title: Text(
-                "聊天",
+                "我的",
                 style: TextStyle(
                   color: _currentIndex == 2
                       ? Color(0xFF46c01b)
@@ -175,6 +175,7 @@ class _AppState extends State<App> {
                     ),
             ),
           ]),
+      body: _currentPage(),
     );
   }
 }

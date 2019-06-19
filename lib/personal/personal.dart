@@ -115,15 +115,15 @@ class Person extends StatelessWidget {
                     color: Color(0xFFd9d9d9),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  color: Colors.white,
-                  child: ImItem(
-                    title: "清理缓存",
-                    imagePath: "images/code.png",
-                  ),
-                ),
               ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            color: Colors.white,
+            child: ImItem(
+              title: "清理缓存",
+              imagePath: "images/code.png",
             ),
           ),
         ],

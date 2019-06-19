@@ -28,11 +28,11 @@ class ContractSliderList extends StatefulWidget {
 class _ContractSliderState extends State<ContractSliderList> {
   var _scrollController = ScrollController();
 
-  _onNotification(ScrollNotification n) {
+  bool _onNotification(ScrollNotification n) {
     return true;
   }
 
-  _isShowHeaderView(index) {
+  Widget _isShowHeaderView(index) {
     if (index == 0 && widget.headBuilder != null) {
       return Offstage(
         offstage: false,

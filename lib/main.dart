@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         "app": (context) => App(),
         "/friends": (_) => WebviewScaffold(
-              url: "www.baidu.com",
+              url: "https://www.baidu.com",
               appBar: AppBar(
                 title: Text("百度"),
               ),
