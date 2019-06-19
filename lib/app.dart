@@ -16,7 +16,7 @@ class _AppState extends State<App> {
 
   MessagePage _messagePage;
 
-  Contact _contact;
+  Contacts _contact;
 
   Person _person;
 
@@ -29,7 +29,7 @@ class _AppState extends State<App> {
         return _messagePage;
       case 1:
         if (_contact == null) {
-          _contact = Contact();
+          _contact = Contacts();
         }
         return _contact;
       case 2:

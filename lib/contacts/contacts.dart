@@ -4,47 +4,47 @@ import 'contact_header.dart';
 import 'contact_item.dart';
 import 'contact_vo.dart';
 
-class Contact extends StatefulWidget {
+//好友列表主页面
+class Contacts extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return _ContactState();
-  }
+  ContactState createState() => new ContactState();
 }
 
-class _ContactState extends State<Contact> {
+class ContactState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
+      //主体实现
       body: ContractSliderList(
+        //好友列表数据
         items: contactData,
-        headBuilder: (context, index) {
+        //好友列表头构造器
+        headerBuilder: (BuildContext context, int index) {
           return Container(
+            //好友列表头
             child: ContactHeader(),
           );
         },
-        itemBuilder: (context, index) {
+        //好友列表项构造器
+        itemBuilder: (BuildContext context, int index) {
           return Container(
             color: Colors.white,
             alignment: Alignment.centerLeft,
-            child: ContactItem(
-              contactVO: contactData[index],
-            ),
+            //好友列表项
+            child: ContactItem(contactVO: contactData[index]),
           );
         },
-        sectionBuilder: (context, index) {
+        //字母构造器
+        sectionBuilder: (BuildContext context, int index) {
           return Container(
-            height: 32,
-            padding: EdgeInsets.only(left: 14),
+            height: 32.0,
+            padding: const EdgeInsets.only(left: 14.0),
             color: Colors.grey[300],
             alignment: Alignment.centerLeft,
+            //显示字母
             child: Text(
               contactData[index].seationKey,
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF909090),
-              ),
+              style: TextStyle(fontSize: 14.0, color: Color(0xff909090)),
             ),
           );
         },
